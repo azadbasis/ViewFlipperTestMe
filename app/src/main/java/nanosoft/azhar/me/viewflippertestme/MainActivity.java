@@ -2,7 +2,6 @@ package nanosoft.azhar.me.viewflippertestme;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     Button Next, Previous;
     EditText EditText01, EditText02, EditText03, EditText04;
+    int flipperId = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,37 +35,37 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
-                boolean isFlipping = false;
-
-                String name = EditText01.getText().toString();
-                String email = EditText02.getText().toString();
-                if (TextUtils.isEmpty(name)) {
-                    EditText01.setError("Input Your name");
-                    isFlipping = viewFlipper.isFlipping();
-
-                } else if (!name.equalsIgnoreCase("azhar")) {
-                    EditText01.setError("Input correct name");
-
-                } else {
-                    viewFlipper.showNext();
+                switch (flipperId) {
+                    case 0:
+                        if (EditText01.getText().toString().equalsIgnoreCase("az1")) {
+                            flipperId++;
+                            viewFlipper.showNext();
+                        }
+                        break;
+                    case 1:
+                        if (EditText02.getText().toString().equalsIgnoreCase("az2")) {
+                            flipperId++;
+                            viewFlipper.showNext();
+                        }
+                        break;
+                    case 2:
+                        if (EditText03.getText().toString().equalsIgnoreCase("az3")) {
+                            flipperId++;
+                            viewFlipper.showNext();
+                        }
+                        break;
+                    case 3:
+                        if (EditText04.getText().toString().equalsIgnoreCase("az4")) {
+                            flipperId++;
+                            viewFlipper.showNext();
+                        }
+                        break;
+                    default:
+                        break;
 
                 }
-
-
-
-
-                  /*  if (viewFlipper.isFlipping()) {
-                        viewFlipper.stopFlipping();
-                        Toast.makeText(MainActivity.this, "flipping "+isFlipping, Toast.LENGTH_SHORT).show();
-                    }*/
-/*
-                   if(TextUtils.isEmpty(email)){
-                        EditText02.setError("input your email");
-                        viewFlipper.stopFlipping();
-                    }else {
-                        viewFlipper.startFlipping();
-                    }*/
+                String name = EditText01.getText().toString();
+                String email = EditText02.getText().toString();
 
 
             }
@@ -75,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
-                viewFlipper.showPrevious();
+                if (flipperId > 0) {
+                    viewFlipper.showPrevious();
+                    flipperId--;
+                }
             }
         });
     }
