@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 // 2 is the index for the 3rd child
-        viewFlipper.setDisplayedChild(0);
+        //   viewFlipper.setDisplayedChild(0);
 // or when you don't know the index but the ID of the view
-        viewFlipper.setDisplayedChild( viewFlipper.indexOfChild(findViewById(R.id.view01)) );
+        //   viewFlipper.setDisplayedChild( viewFlipper.indexOfChild(findViewById(R.id.view01)) );
 
         Next = (Button) findViewById(R.id.Next);
         Previous = (Button) findViewById(R.id.Previous);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     viewFlipper.showNext();
 
-                    }
+                }
 
 
 
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         viewFlipper.startFlipping();
                     }*/
-
 
 
             }
